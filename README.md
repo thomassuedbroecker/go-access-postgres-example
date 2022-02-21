@@ -2,9 +2,18 @@
 
 The example is related to [pgx - PostgreSQL Driver and Toolkit](https://github.com/jackc/pgx)
 
+
+### Step 1: Git clone
+
+```sh
+git clone https://github.com/thomassuedbroecker/go-access-postgres-example.git
+cd go-access-postgres-example
+```
+
 ### Step 1: Create a mod file
 
 ```sh
+cd gopostgressql
 go mod init example/gopostgressql
 ```
 
@@ -72,8 +81,3 @@ export DATABASE_URL="postgres://username:password@localhost:5432/database_name"
 go run  .
 ```
 
-
-example/gopsql
-
-
-Source https://github.com/jackc/pgx# go-access-postgres-example
