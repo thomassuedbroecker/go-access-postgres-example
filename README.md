@@ -10,7 +10,7 @@ git clone https://github.com/thomassuedbroecker/go-access-postgres-example.git
 cd go-access-postgres-example
 ```
 
-### Step 1: Create a mod file
+### Step 2: Create a mod file (that file exists)
 
 ```sh
 cd gopostgressql
@@ -23,7 +23,7 @@ go mod init example/gopostgressql
 go: creating new go.mod: module example/gopostgressql
 ```
 
-### Step 2: Create a go file
+### Step 2: Create a go file (that file exists)
 
 ```sh
 touch gopostgressql.go
@@ -48,6 +48,8 @@ func main() {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
 		os.Exit(1)
+	} else {
+	   fmt.Fprintf("Connected to the DB: true [" + os.Getenv("DATABASE_URL") + "] \n")
 	}
 	defer conn.Close(context.Background())
 
@@ -55,6 +57,7 @@ func main() {
 	var weight int64
 	err = conn.QueryRow(context.Background(), "select name, weight from widgets where id=$1", 42).Scan(&name, &weight)
 	if err != nil {
+	        fmt.Fprintf(os.Stderr, "Connected to the DB: true\n")
 		fmt.Fprintf(os.Stderr, "QueryRow failed: %v\n", err)
 		os.Exit(1)
 	}
