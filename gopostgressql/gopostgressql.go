@@ -15,7 +15,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
 		os.Exit(1)
 	} else {
-	   fmt.Fprintf("Connected to the DB: true [" + os.Getenv("DATABASE_URL") + "] \n")
+	   fmt.Printf("Connected to the DB: true [" + os.Getenv("DATABASE_URL") + "] \n")
 	}
 	defer conn.Close(context.Background())
 
@@ -23,7 +23,7 @@ func main() {
 	var weight int64
 	err = conn.QueryRow(context.Background(), "select name, weight from widgets where id=$1", 42).Scan(&name, &weight)
 	if err != nil {
-	        fmt.Fprintf(os.Stderr, "Connected to the DB: true\n")
+	        fmt.Printf("Connected to the DB: true\n")
 		fmt.Fprintf(os.Stderr, "QueryRow failed: %v\n", err)
 		os.Exit(1)
 	}
